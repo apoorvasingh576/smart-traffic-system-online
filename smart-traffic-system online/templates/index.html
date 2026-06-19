@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Smart Traffic Detection</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+🚦 Smart Traffic Detection and Adaptive Signal Management System
+</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image" required>
+
+<br><br>
+
+<button type="submit">
+Analyze Traffic
+</button>
+
+</form>
+
+{% if image_uploaded %}
+
+<h2>AI Detection Output</h2>
+
+<img src="{{ url_for('static',
+filename='detected_traffic.jpg') }}"
+width="600">
+
+<h2>Results</h2>
+
+<p><b>Detected Vehicles:</b> {{ vehicles }}</p>
+
+<p><b>Traffic Density:</b> {{ density }}</p>
+
+<p><b>Green Signal Time:</b> {{ green_time }} sec</p>
+
+<p><b>Status:</b> {{ alert }}</p>
+
+{% endif %}
+
+</div>
+
+</body>
+
+</html>
